@@ -1,0 +1,77 @@
+[
+    {
+        "name":"Something",
+        "price":"100",
+        "description":"this is product 1",
+        "rating":4.5,
+        "images":[{
+            "public_id":"products/tzfsnrli3szrdnb4jgge",
+            "url":"https://th.bing.com/th/id/OIP.huDJ7UV8WDMIBXGUCRpKEQHaGg?pid=ImgDet&rs=1"
+        }],
+        "category":"Laptop",
+        "seller":"Amazon",
+        "stock":131,
+        "numOfReviews":222,
+        "review":[]
+    },
+    {
+        "name":"ASUS VIVOBOOK 499",
+        "price":"48000",
+        "description":"ASUS VIVOBOOK jdaslkjsda sdjaklsjdlakjd sdahjksa",
+        "rating":4.5,
+        "images":[{
+            "public_id":"products/tzfsnrli3szrdnb4jgge",
+            "url":"https://th.bing.com/th/id/OIP.huDJ7UV8WDMIBXGUCRpKEQHaGg?pid=ImgDet&rs=1"
+        }],
+        "category":"Laptop",
+        "seller":"Amazon",
+        "stock":131,
+        "numOfReviews":222,
+        "review":[]
+    },
+    {
+        "name":"ASUS VIVOBOOK 566",
+        "price":"100",
+        "description":"this is product 1",
+        "rating":4.5,
+        "images":[{
+            "public_id":"products/tzfsnrli3szrdnb4jgge",
+            "url":"https://th.bing.com/th/id/OIP.huDJ7UV8WDMIBXGUCRpKEQHaGg?pid=ImgDet&rs=1"
+        }],
+        "category":"Laptop",
+        "seller":"Amazon",
+        "stock":131,
+        "numOfReviews":222,
+        "review":[]
+    },
+    {
+        "name":"Something",
+        "price":"100",
+        "description":"this is product 1",
+        "rating":4.5,
+        "images":[{
+            "public_id":"products/tzfsnrli3szrdnb4jgge",
+            "url":"https://th.bing.com/th/id/OIP.huDJ7UV8WDMIBXGUCRpKEQHaGg?pid=ImgDet&rs=1"
+        }],
+        "category":"Laptop",
+        "seller":"Amazon",
+        "stock":131,
+        "numOfReviews":222,
+        "review":[]
+    },
+    {
+        "name":"Cannon Camara 39",
+        "price":"100",
+        "description":"This is cannon camara something seksd ksdakl jdsaklsd aklsjdsdal jsdklajsads jdsalkjsda sjdaklsc asjdklajs cajsdkljasklda sakdjaklsdja kasjdaklsdklamcam ckasjdklas sjdklsajdklam ckajklsdmaskjimsdaismc ajsdklaakca lsdjlkajklmcaksjdklasjdklklamcskacmaklscakl sdakljdkalsdakljsklcmaksljdlkmsa sjdlkajdsjakmca ksdjaklsmcjasdaklkslda",
+        "rating":4.5,
+        "images":[{
+            "public_id":"products/tzfsnrli3szrdnb4jgge",
+            "url":"https://th.bing.com/th/id/R.8c1aa586289ac3050f1ace224e6ff6cc?rik=OYa3yWAFcgz4mw&riu=http%3a%2f%2fwww.tuexperto.com%2fwp-content%2fuploads%2f2012%2f01%2ffujifilm_hs30exr_01.jpg&ehk=KuR0FRmWKpbDC5htrZHOf3tCo6pLrRNqNBl53N6Zi%2bw%3d&risl=&pid=ImgRaw"
+        }],
+        "category":"Laptop",
+        "seller":"Amazon",
+        "stock":131,
+        "numOfReviews":222,
+        "review":[]
+    }
+]
