@@ -24,9 +24,11 @@ exports.newProducts = catchAsyncErrors(async (req,res,next)=>{
 
 //get all products 
 exports.getProducts = catchAsyncErrors(async (req,res,next)=>{
+    
+    //return next(new ErrorHandler('My Error',400))
 
-    const resPerPage = 15;
-    const productCount = await Product.countDocuments();
+    const resPerPage = 16;
+    const productsCount = await Product.countDocuments();
     //console.log(Product.find());
     const apiFeatures = new APIFeatures(Product.find(),req.query)
                         .search()
@@ -36,13 +38,15 @@ exports.getProducts = catchAsyncErrors(async (req,res,next)=>{
     const products = await apiFeatures.query;
     
     //console.log(products);
+        setTimeout(()=>{
+            res.status(200).json({
+                success:true,
+                count:products.length,
+                productsCount,
+                products
+            })
+        },2000)
 
-    res.status(200).json({
-        success:true,
-        count:products.length,
-        productCount,
-        products
-    })
 })
 
 
