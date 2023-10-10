@@ -28,20 +28,20 @@ exports.getCategory = catchAsyncErrors(async (req, res, next) => {
   //console.log(Product.find());
   const apiFeatures = new APIFeatures(Category.find(), req.query)
     .search()
-    .filter()
+    // .filter()
     .pagination(resPerPage);
 
   const categories = await apiFeatures.query;
 
   //console.log(products);
-  setTimeout(() => {
+  
     res.status(200).json({
       success: true,
       count: categories.length,
       categoryCount: categoryCount,
       categories: categories,
     });
-  }, 2000);
+ 
 });
 
 //get a single product
