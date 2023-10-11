@@ -15,6 +15,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Services from "./pages/Services";
+import PrivateRouteForAdmin from "./authentication/PrivateRouteForAdmin";
 
 function App() {
   useEffect(() => {
@@ -45,22 +46,23 @@ function App() {
       <Routes>
         {/* PublicRoutes */}
 
-        <Route path='/' element={<Home />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Private Routes  */}
 
         <Route element={<PrivateRoute />}>
-          <Route path='/services' element={<Services />} />
-          <Route path='/about' element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
         </Route>
-        
-        <Route path='/dashboard' element={<Dashboard />}>
-          {/* root/dashboard/add-admin */}
-          <Route path='add-admin' element={<AddAdmin />} />
-          {/* root/dashboard/add-service */}
-          <Route path='add-service' element={<AddService />} />
+
+        <Route path="/dashboard" element={<Dashboard />}>
+          {/* private routes  */}
+          <Route element={<PrivateRouteForAdmin />}>
+            <Route path="add-admin" element={<AddAdmin />} />
+            <Route path="add-service" element={<AddService />} />
+          </Route>
         </Route>
       </Routes>
     </Navbar>
