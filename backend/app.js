@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const errorMiddleware = require("./middlewares/error");
 
+app.use(cors());
 app.use(express.json());
 //check for cookie
 app.use(cookieParser());
