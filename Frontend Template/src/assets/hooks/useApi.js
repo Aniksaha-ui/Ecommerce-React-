@@ -2,25 +2,25 @@ import { useParams } from "react-router-dom";
 import useAxios from "./useAxios";
 
 const useApi = () => {
-    const { id } = useParams();
-    const axiosClient = useAxios();
+  const { id } = useParams();
+  const axiosClient = useAxios();
 
-    /** calling login api */
-    
-     const login = async (data) => {
-        const response = await axiosClient.apiClient("POST","login",data);
-        if(response){
-            if(response?.data?.success===true){
-                return response;
-            }
-        }
+  /** calling login api */
+
+  const login = async (data) => {
+    const response = await axiosClient.apiClient("POST", "login", data);
+    if (response) {
+      if (response?.data?.success === true) {
+        return response;
       }
-    /** calling login api */
+    }
+    return null;
+  };
+  /** calling login api */
 
-
-     return {
-        login
-     }
-}
+  return {
+    login,
+  };
+};
 
 export default useApi;
