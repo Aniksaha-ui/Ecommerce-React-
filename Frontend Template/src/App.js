@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Services from "./pages/Services";
 import PrivateRouteForAdmin from "./authentication/PrivateRouteForAdmin";
+import Category from "../src/pages/Dashboard/category/Category";
 
 function App() {
   useEffect(() => {
@@ -62,6 +63,7 @@ function App() {
           <Route element={<PrivateRouteForAdmin />}>
             <Route path="add-admin" element={<AddAdmin />} />
             <Route path="add-service" element={<AddService />} />
+            <Route path="category" element={<Category />} />
           </Route>
         </Route>
       </Routes>
