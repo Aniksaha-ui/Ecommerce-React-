@@ -7,6 +7,7 @@ const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 //it is for if any required field is missing finished
 
 const APIFeatures = require("../utils/apiFeatures");
+const { resPerPage } = require("../utils/constrant");
 
 exports.newCategory = catchAsyncErrors(async (req, res, next) => {
   req.body.user = req.user.id;
@@ -23,25 +24,24 @@ exports.newCategory = catchAsyncErrors(async (req, res, next) => {
 exports.getCategory = catchAsyncErrors(async (req, res, next) => {
   //return next(new ErrorHandler('My Error',400))
 
-  const resPerPage = 2;
+  const resPerPage = resPerPage;
   const categoryCount = await Category.countDocuments();
   //console.log(Product.find());
   const apiFeatures = new APIFeatures(Category.find(), req.query)
     .search()
-    .filter()
+    // .filter()
     .pagination(resPerPage);
 
   const categories = await apiFeatures.query;
 
   //console.log(products);
-  setTimeout(() => {
-    res.status(200).json({
-      success: true,
-      count: categories.length,
-      categoryCount: categoryCount,
-      categories: categories,
-    });
-  }, 2000);
+
+  res.status(200).json({
+    success: true,
+    count: categories.length,
+    categoryCount: categoryCount,
+    categories: categories,
+  });
 });
 
 //get a single product
