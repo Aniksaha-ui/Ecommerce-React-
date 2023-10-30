@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import { useLocation } from "react-router-dom";
+import useApi from "../assets/hooks/useApi";
+import useCommon from "../assets/hooks/useCommon";
 
 const Navbar = ({ children }) => {
   const [dark, setDark] = useState(false);
   const { pathname } = useLocation();
 
   const [admin] = useAdmin();
+
+  /**dependancy injection */
+  const api = useApi();
+  const commonService = useCommon();
+  const navigate = useNavigate();
+
+  /**declear all state */
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const response = api.getLocalStorageValue();
+    setToken(response.token);
+  }, []);
+
+  /** handle logout */
+  const handleLogout = (e) => {
+    e.preventDefault();
+    commonService.tryLogout();
+    navigate("/login");
+  };
 
   return (
     <div class="drawer  drawer-end" data-theme={dark ? "dark" : "light"}>
@@ -84,11 +106,21 @@ const Navbar = ({ children }) => {
                   Contact
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/login" className="rounded-lg">
-                  Login
-                </NavLink>
-              </li>
+              {token !== null && (
+                <li>
+                  <button onClick={handleLogout} className="rounded-lg">
+                    logout
+                  </button>
+                </li>
+              )}
+
+              {token === null && (
+                <li>
+                  <NavLink to="/login" className="rounded-lg">
+                    Login
+                  </NavLink>
+                </li>
+              )}
 
               <li class="dropdown dropdown-hover dropdown-end">
                 <label
@@ -163,11 +195,23 @@ const Navbar = ({ children }) => {
               Contact
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/login" className="rounded-lg">
-              Login
-            </NavLink>
-          </li>
+
+          {token !== null && (
+            <li>
+              <button onClick={handleLogout} className="rounded-lg">
+                logout
+              </button>
+            </li>
+          )}
+
+          {token === null && (
+            <li>
+              <NavLink to="/login" className="rounded-lg">
+                Login
+              </NavLink>
+            </li>
+          )}
+
           <div
             tabindex="0"
             class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
