@@ -5,6 +5,19 @@ const useApi = () => {
   const { id } = useParams();
   const axiosClient = useAxios();
 
+  /** get localstorage value */
+  const getLocalStorageValue = () => {
+    return {
+      token: localStorage.getItem("token")
+        ? localStorage.getItem("token")
+        : null,
+      email: localStorage.getItem("email")
+        ? localStorage.getItem("email")
+        : null,
+      role: localStorage.getItem("role") ? localStorage.getItem("role") : null,
+    };
+  };
+
   /** calling login api */
 
   const login = async (data) => {
@@ -32,6 +45,7 @@ const useApi = () => {
   return {
     login,
     getAllCategory,
+    getLocalStorageValue,
   };
 };
 

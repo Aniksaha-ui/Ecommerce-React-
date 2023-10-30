@@ -19,7 +19,7 @@ const Category = () => {
     <div className="container mx-auto">
       <div className="overflow-x-auto">
         {/* table information */}
-        <table className="table">
+        <table className="container mx-auto table">
           {/* head */}
           <caption class="caption-bottom mb-3">
             Fig 1.1 : Category Table

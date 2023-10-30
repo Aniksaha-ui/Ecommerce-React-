@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useApi from "../assets/hooks/useApi";
 
 const DashboardSidebar = ({ children }) => {
+  /**dependancy injection */
+  const api = useApi();
+
+  /**declear all state */
+  const [role, setRole] = useState(null);
+
+  /**load localstorage data */
+  useEffect(() => {
+    const response = api.getLocalStorageValue();
+    setRole(response.role);
+  }, []);
+
   return (
     <div class="drawer drawer-mobile mt-16 bg-accent">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -19,9 +32,16 @@ const DashboardSidebar = ({ children }) => {
           <li>
             <NavLink to="/dashboard/add-admin">Add Admin</NavLink>
           </li> */}
-          <li>
-            <NavLink to="/dashboard/category">Manage Category</NavLink>
-          </li>
+          {role === "admin" && (
+            <li>
+              <NavLink to="/dashboard/category">Manage Category</NavLink>
+            </li>
+          )}
+          {role === "user" && (
+            <li>
+              <NavLink to="#">TBA</NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>
