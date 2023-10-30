@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useApi from "../../../assets/hooks/useApi";
+import ShowSingleCategory from "./show-category/ShowSingleCategory";
 
 const Category = () => {
   /** dependancy injection */
@@ -9,11 +10,24 @@ const Category = () => {
   /**declear state */
   const [page, setPage] = useState(1);
   const [keyWord, setKeyWord] = useState("");
+  const [categories, setCategories] = useState([]);
   /**declear state */
 
   useEffect(() => {
-    api.getAllCategory();
+    loadCategoryInformation();
+
+    // setCategories(response.categories);
   }, []);
+
+  const loadCategoryInformation = async () => {
+    const res = await api.getAllCategory();
+    setCategories(res.data.categories);
+  };
+
+  /** handle filter */
+  const handleFilter = (e) => {
+    console.log(e.target.value, "value");
+  };
 
   return (
     <div className="container mx-auto">
@@ -21,22 +35,17 @@ const Category = () => {
         {/* table information */}
         <table className="container mx-auto table">
           {/* head */}
-          <caption class="caption-bottom mb-3">
-            Fig 1.1 : Category Table
-          </caption>
+
+          <caption class="caption-top mb-3">Category Information</caption>
+
           <caption class="caption-top mb-3">
-            <div>
-              <label
-                for="price"
-                class="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Search Category
-              </label>
+            <div class="flex justify-between">
               <div class="relative mt-2 rounded-md shadow-sm">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                   <span class="text-gray-500 sm:text-sm">$</span>
                 </div>
                 <input
+                  onChange={handleFilter}
                   type="text"
                   name="search"
                   id="search"
@@ -44,28 +53,26 @@ const Category = () => {
                   placeholder="Search"
                 />
               </div>
+              <div className="btn btn-info mx-4">Add New</div>
             </div>
           </caption>
+
+          <caption class="caption-bottom mb-3">
+            Fig 1.1 : Category Table
+          </caption>
+
           <thead>
             <tr className="bg-info">
               <th className="border border-slate-300">SL</th>
               <th className="border border-slate-300">Category Name</th>
-              <th className="border border-slate-300">Created by</th>
-              <th className="border border-slate-300">Updated By</th>
-              <th className="border border-slate-300">Created At</th>
-              <th className="border border-slate-300">Updated At</th>
+              <th className="border border-slate-300">Action</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr className="hover">
-              <th className="border border-slate-300">1</th>
-              <td className="border border-slate-300">Cy Ganderton</td>
-              <td className="border border-slate-300">Admin</td>
-              <td className="border border-slate-300">Admin</td>
-              <td className="border border-slate-300">10-10-2010</td>
-              <td className="border border-slate-300">10-12-2010</td>
-            </tr>
+            {categories.map((category) => (
+              <ShowSingleCategory category={category} />
+            ))}
           </tbody>
         </table>
         {/* table information */}

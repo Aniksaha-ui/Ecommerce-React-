@@ -31,15 +31,18 @@ const useApi = () => {
   };
   /** calling login api */
 
-  
   /** calling category api */
   const getAllCategory = async (keyword, pageNumber) => {
     const response = await axiosClient.apiClient(
       "GET",
       `category/all?keyword=${keyword}&page=${pageNumber}`
     );
-
-    console.log(response, "response from all category");
+    if (response) {
+      if (response?.data?.success === true) {
+        return response;
+      }
+    }
+    return null;
   };
   /** calling category api */
 
